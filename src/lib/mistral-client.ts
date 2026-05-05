@@ -84,14 +84,9 @@ function extractJSON(text: string): string {
 }
 
 export async function analyzeContract(contractText: string): Promise<AnalyseErgebnis> {
-  const provider = process.env.AI_PROVIDER || 'mistral'
-  const url = provider === 'nvidia'
-    ? 'https://integrate.api.nvidia.com/v1/chat/completions'
-    : 'https://api.mistral.ai/v1/chat/completions'
-  const apiKey = provider === 'nvidia' ? process.env.NVIDIA_API_KEY! : process.env.MISTRAL_API_KEY!
-  const model = provider === 'nvidia'
-    ? (process.env.NVIDIA_MODEL || 'mistralai/mistral-large-latest')
-    : (process.env.MISTRAL_MODEL || 'mistral-large-latest')
+  const url = 'https://integrate.api.nvidia.com/v1/chat/completions'
+  const apiKey = process.env.NVIDIA_API_KEY!
+  const model = process.env.NVIDIA_MODEL || 'mistralai/mistral-small-4-119b-2603'
 
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), 60000)
