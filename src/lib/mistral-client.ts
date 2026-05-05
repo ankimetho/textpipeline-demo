@@ -84,7 +84,7 @@ function extractJSON(text: string): string {
 }
 
 export async function analyzeContract(contractText: string): Promise<AnalyseErgebnis> {
-  const url = 'https://integrate.api.nvidia.com/v1/chat/completions'
+  const url = 'https://integrate.api.nvidia.com/v1'
   const apiKey = process.env.NVIDIA_API_KEY!
   const model = process.env.NVIDIA_MODEL || 'mistralai/mistral-small-4-119b-2603'
 
